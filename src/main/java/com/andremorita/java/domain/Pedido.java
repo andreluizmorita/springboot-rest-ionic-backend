@@ -1,9 +1,11 @@
 package com.andremorita.java.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Pedido {
-
+public class Pedido implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	
 	private Date instance;

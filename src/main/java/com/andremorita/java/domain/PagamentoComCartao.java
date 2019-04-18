@@ -3,6 +3,7 @@ package com.andremorita.java.domain;
 import com.andremorita.java.domain.enums.EstadoPagamento;
 
 public class PagamentoComCartao extends Pagamento {
+	private static final long serialVersionUID = 1L;
 	
 	private Integer numeroDeParcelas;
 	

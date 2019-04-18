@@ -5,6 +5,7 @@ import java.util.Date;
 import com.andremorita.java.domain.enums.EstadoPagamento;
 
 public class PagamentoComBoleto extends Pagamento {
+	private static final long serialVersionUID = 1L;
 	
 	private Date dataVencimento;
 	

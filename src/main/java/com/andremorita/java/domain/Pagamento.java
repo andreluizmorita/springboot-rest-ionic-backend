@@ -1,9 +1,11 @@
 package com.andremorita.java.domain;
 
+import java.io.Serializable;
+
 import com.andremorita.java.domain.enums.EstadoPagamento;
 
-public class Pagamento {
-
+public class Pagamento implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	
 	private EstadoPagamento estado;
