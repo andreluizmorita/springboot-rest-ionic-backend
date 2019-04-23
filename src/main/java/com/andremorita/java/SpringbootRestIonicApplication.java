@@ -13,6 +13,7 @@ import com.andremorita.java.domain.Cidade;
 import com.andremorita.java.domain.Cliente;
 import com.andremorita.java.domain.Endereco;
 import com.andremorita.java.domain.Estado;
+import com.andremorita.java.domain.ItemPedido;
 import com.andremorita.java.domain.Pagamento;
 import com.andremorita.java.domain.PagamentoComBoleto;
 import com.andremorita.java.domain.PagamentoComCartao;
@@ -25,6 +26,7 @@ import com.andremorita.java.repositories.CidadeRepository;
 import com.andremorita.java.repositories.ClienteRepository;
 import com.andremorita.java.repositories.EnderecoRepository;
 import com.andremorita.java.repositories.EstadoRepository;
+import com.andremorita.java.repositories.ItemPedidoRepository;
 import com.andremorita.java.repositories.PagamentoRepository;
 import com.andremorita.java.repositories.PedidoRepository;
 import com.andremorita.java.repositories.ProdutoRepository;
@@ -48,6 +50,8 @@ public class SpringbootRestIonicApplication implements CommandLineRunner {
 	private PedidoRepository pedidoRepository;
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootRestIonicApplication.class, args);
@@ -100,7 +104,7 @@ public class SpringbootRestIonicApplication implements CommandLineRunner {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 		
 		Pedido ped1 = new Pedido(null, sdf.parse("30/09/2017 10:32"), cli1, end1);
-		Pedido ped2 = new Pedido(null, sdf.parse("10/10/2017 19:35"), cli1, end2);
+		Pedido ped2 = new Pedido(null, sdf.parse("10/10/2017 19:35"), cli1, end2);		
 		
 		Pagamento pag1 = new PagamentoComCartao(null, EstadoPagamento.QUITADO, ped1, 6);
 		ped1.setPagamento(pag1);
@@ -112,6 +116,20 @@ public class SpringbootRestIonicApplication implements CommandLineRunner {
 		
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pag1, pag2));
+		
+		ItemPedido ite1 = new ItemPedido(ped1, pro1, 0.00, 1, 2000.00);
+		ItemPedido ite2 = new ItemPedido(ped1, pro3, 0.00, 2, 80.00);
+		
+		ItemPedido ite3 = new ItemPedido(ped2, pro2, 100.00, 1, 800.00);
+		
+		ped1.getItens().addAll(Arrays.asList(ite1, ite2));
+		ped2.getItens().addAll(Arrays.asList(ite3));
+		
+		pro1.getItens().addAll(Arrays.asList(ite1));
+		pro2.getItens().addAll(Arrays.asList(ite3));
+		pro3.getItens().addAll(Arrays.asList(ite2));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ite1, ite2, ite3));
 		
 	}
 
