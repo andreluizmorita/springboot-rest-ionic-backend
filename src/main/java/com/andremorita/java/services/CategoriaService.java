@@ -1,5 +1,6 @@
 package com.andremorita.java.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,10 @@ public class CategoriaService {
 			throw new DataIntegrityException("Não é possível deletar uma categoria que possui produtos!");
 		}
 		
+	}
+
+	public List<Categoria> findAll() {
+		return repository.findAll();
 	}
 	
 	
