@@ -3,7 +3,6 @@ package com.andremorita.java.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.andremorita.java.domain.Categoria;
@@ -24,6 +23,12 @@ public class CategoriaService {
 
 	public Categoria insert(Categoria obj) {
 		obj.setId(null);
+		return repository.save(obj);
+	}
+
+	public Categoria update(Categoria obj) {
+		find(obj.getId());
+		
 		return repository.save(obj);
 	}
 	
