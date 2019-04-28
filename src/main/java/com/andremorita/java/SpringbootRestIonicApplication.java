@@ -62,6 +62,15 @@ public class SpringbootRestIonicApplication implements CommandLineRunner {
 		
 		Categoria cat1 = new Categoria(null, "Informática");
 		Categoria cat2 = new Categoria(null, "Escritório");
+		Categoria cat3 = new Categoria(null, "Smartphone");
+		Categoria cat4 = new Categoria(null, "Cozinha");
+		Categoria cat5 = new Categoria(null, "Cama");
+		Categoria cat6 = new Categoria(null, "Mesa");
+		Categoria cat7 = new Categoria(null, "Banho");
+		Categoria cat8 = new Categoria(null, "Eletro");
+		Categoria cat9 = new Categoria(null, "Geek");
+		Categoria cat10 = new Categoria(null, "Pet");
+		Categoria cat11 = new Categoria(null, "Cubos");
 		
 		Produto pro1 = new Produto(null, "Computador", 2000.00);
 		Produto pro2 = new Produto(null, "Impressora", 800.00);
@@ -74,7 +83,7 @@ public class SpringbootRestIonicApplication implements CommandLineRunner {
 		pro2.getCategorias().addAll(Arrays.asList(cat1, cat2));
 		pro3.getCategorias().addAll(Arrays.asList(cat1));
 		
-		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, cat9, cat10, cat11));
 		produtoRepository.saveAll(Arrays.asList(pro1, pro2, pro3));
 		
 		Estado est1 = new Estado(null, "Minas Gerais");
