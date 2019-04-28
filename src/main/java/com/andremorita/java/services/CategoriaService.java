@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.andremorita.java.domain.Categoria;
+import com.andremorita.java.dto.CategoriaDTO;
 import com.andremorita.java.repositories.CategoriaRepository;
 import com.andremorita.java.services.exceptions.DataIntegrityException;
 import com.andremorita.java.services.exceptions.ObjectNotFoundException;
@@ -59,5 +60,8 @@ public class CategoriaService {
 		
 		return repository.findAll(pageRequest);
 	}
-
+	
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
+	}
 }
