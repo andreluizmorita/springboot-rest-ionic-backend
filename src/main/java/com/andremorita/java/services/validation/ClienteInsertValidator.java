@@ -18,7 +18,7 @@ import com.andremorita.java.services.validation.utils.BR;
 public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert, ClienteNewDTO> {
 
 	@Autowired
-	private ClienteRepository repo;
+	private ClienteRepository repository;
 	
 	@Override
 	public void initialize(ClienteInsert ann) {
@@ -37,7 +37,7 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
 			list.add(new FieldMessage("cpfOuCnpj", "CNPJ inválido"));
 		}
 
-		Cliente aux = repo.findByEmail(objDto.getEmail());
+		Cliente aux = repository.findByEmail(objDto.getEmail());
 		if (aux != null) {
 			list.add(new FieldMessage("email", "Email já existente"));
 		}
