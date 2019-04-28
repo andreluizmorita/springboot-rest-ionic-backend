@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.andremorita.java.domain.Cliente;
 import com.andremorita.java.dto.ClienteDTO;
+import com.andremorita.java.dto.ClienteNewDTO;
 import com.andremorita.java.services.ClienteService;
 
 @RestController
@@ -34,8 +35,8 @@ public class ClienteResource {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteDTO objDto) {
-		Cliente obj = service.fromDTO(objDto);
+	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objNewDto) {
+		Cliente obj = service.fromDTO(objNewDto);
 		obj = service.insert(obj);
 
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
